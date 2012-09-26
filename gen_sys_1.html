@@ -1,0 +1,31 @@
+<pre>
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;">setup</span>(){
+&nbsp;&nbsp;<span style="color: #CC6600;">size</span>(1000,700,<span style="color: #006699;">P3D</span>);
+&nbsp;&nbsp;<span style="color: #CC6600;">smooth</span>();
+&nbsp;&nbsp;<span style="color: #CC6600;">background</span>(150);
+
+&nbsp;&nbsp;<span style="color: #CC6600;">noStroke</span>();
+&nbsp;&nbsp;<span style="color: #CC6600;">fill</span>(255,200);
+&nbsp;&nbsp;<span style="color: #CC6600;">float</span> xstart = <span style="color: #CC6600;">random</span>(10);
+&nbsp;&nbsp;<span style="color: #CC6600;">float</span> ynoise = <span style="color: #CC6600;">random</span>(10);
+&nbsp;&nbsp;<span style="color: #CC6600;">translate</span>(<span style="color: #006699;">width</span>/2, <span style="color: #006699;">height</span>/2, 0);
+&nbsp;&nbsp;<span style="color: #CC6600;">for</span> (<span style="color: #CC6600;">float</span> <span style="color: #CC6600;">y</span> = -(<span style="color: #006699;">height</span>/8); <span style="color: #CC6600;">y</span> &lt;= (<span style="color: #006699;">height</span>/8); <span style="color: #CC6600;">y</span>+=3){
+&nbsp;&nbsp;&nbsp;&nbsp;ynoise&nbsp;+=&nbsp;0.02;
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">float</span> xnoise = xstart;
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">for</span> (<span style="color: #CC6600;">float</span> <span style="color: #CC6600;">x</span> = -(<span style="color: #006699;">width</span>/8); <span style="color: #CC6600;">x</span> &lt;= (<span style="color: #006699;">width</span>/8); <span style="color: #CC6600;">x</span>+=3){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xnoise&nbsp;+=&nbsp;0.02;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drawPoint&nbsp;(<span style="color: #CC6600;">x</span>,<span style="color: #CC6600;">y</span>,<span style="color: #CC6600;">noise</span>(xnoise,ynoise));
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;}
+}
+
+<span style="color: #CC6600;">void</span> drawPoint (<span style="color: #CC6600;">float</span> <span style="color: #CC6600;">x</span>, <span style="color: #CC6600;">float</span> <span style="color: #CC6600;">y</span>, <span style="color: #CC6600;">float</span> noiseFactor){
+&nbsp;&nbsp;<span style="color: #CC6600;">pushMatrix</span>();
+&nbsp;&nbsp;<span style="color: #CC6600;">translate</span>(<span style="color: #CC6600;">x</span> * noiseFactor * 4, <span style="color: #CC6600;">y</span> * noiseFactor * 4, -<span style="color: #CC6600;">y</span>);
+&nbsp;&nbsp;<span style="color: #CC6600;">float</span> edgeSize = noiseFactor * 26;
+&nbsp;&nbsp;<span style="color: #CC6600;">ellipse</span>(0,0,edgeSize,edgeSize);
+&nbsp;&nbsp;<span style="color: #CC6600;">popMatrix</span>();
+
+}
+
+</pre>
